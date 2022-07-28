@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ci-cd-demo.iml" filepath="$PROJECT_DIR$/.idea/ci-cd-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hello-circle/hello-circle.iml" filepath="$PROJECT_DIR$/hello-circle/hello-circle.iml" />
     </modules>
   </component>
 </project>
