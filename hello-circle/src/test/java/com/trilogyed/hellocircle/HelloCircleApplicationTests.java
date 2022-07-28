@@ -16,17 +16,6 @@ class HelloCircleApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
-	@Autowired
-	MockMvc mockMvc;
-
-	@org.junit.Test
-	public void shouldReturnAnswer() throws Exception {
-		// arrange and act
-		mockMvc.perform(get("/answer"))
-				.andDo(print())
-				.andExpect(status().isOk())        // assert
-				.andExpect(content().string("The answer is 42!"));
-	}
+	
 
 }
