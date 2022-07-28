@@ -8,18 +8,28 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.junit.Assert.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-//import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(HelloCircleController.class)
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 @RunWith(SpringRunner.class)
+@WebMvcTest(HelloCircleController.class)
 public class HelloCircleControllerTest {
 
     @Autowired
-    MockMvc mockMvc;
+    private MockMvc mockMvc;
+
+    @Test
+    public void shouldReturnHello() throws Exception {
+        // arrange and act
+        mockMvc.perform(get("/hello"))
+                .andDo(print())
+                .andExpect(status().isOk())
+
+                // assert
+                .andExpect(content().string("Hello, Circle!"));
+    }
 
     @Test
     public void shouldReturnAnswer() throws Exception {
@@ -27,7 +37,5 @@ public class HelloCircleControllerTest {
         mockMvc.perform(get("/answer"))
                 .andDo(print())
                 .andExpect(status().isOk())        // assert
-                .andExpect(content().string("The answer is 42!"));
-    }
-
+                .andExpect(content().string("The answer is 42!"));}
 }
